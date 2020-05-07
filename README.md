@@ -11,6 +11,7 @@ Include apps folder into nginx.conf
 ```
 
 Create network
+
 ```shell
   docker network create hello-work
 ```
@@ -25,6 +26,12 @@ Stop application:
 
 ```shell
   ./app-update.sh VIRUAL_HOST_NAME
+```
+
+Set aplication environment variables (will be used on next update):
+
+```shell
+  ./app-env-set.sh VIRUAL_HOST_NAME VAR1=VAL1 VAR2=VAL2
 ```
 
 Testing:

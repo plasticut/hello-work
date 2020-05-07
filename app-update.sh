@@ -7,6 +7,7 @@ CONFIG_TEMPLATE=$4
 
 DEFAULT_CONFIG_TEMPLATE=./VIRTUAL_HOST_CONFIG_TEMPLATE.conf
 DEFAULT_INTERNAL_PORT=3000
+ENV_FILE=apps/$VIRTUAL_HOST_NAME/ENV
 
 if [ -z "$VIRTUAL_HOST_NAME" ]; then
   echo "Virtual host not defined"
@@ -34,6 +35,13 @@ fi
 #############################################
 
 mkdir -p apps/$VIRTUAL_HOST_NAME
+
+if test -f "$ENV_FILE"; then
+  echo "Use existent ENV file";
+else
+  echo "Create empty ENV file";
+  touch $ENV_FILE
+fi
 
 PORT=$(./lib/get-free-port.sh)
 
