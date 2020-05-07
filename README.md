@@ -10,16 +10,21 @@ Include apps folder into nginx.conf
   include /usr/docker-deployment/apps/**/*.conf
 ```
 
+Create network
+```shell
+  docker network create hello-work
+```
+
 Start or restart application:
 
 ```shell
-./app-update.sh VIRUAL_HOST_NAME IMAGE_NAME PORT_INSIDE_CONTAINER? NGINX_CONFIG_TEMPLATE_PATH?
+  ./app-update.sh VIRUAL_HOST_NAME IMAGE_NAME PORT_INSIDE_CONTAINER? NGINX_CONFIG_TEMPLATE_PATH?
 ```
 
 Stop application:
 
 ```shell
-./app-update.sh VIRUAL_HOST_NAME
+  ./app-update.sh VIRUAL_HOST_NAME
 ```
 
 Testing:

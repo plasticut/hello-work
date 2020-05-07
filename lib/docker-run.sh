@@ -8,6 +8,8 @@ EXTERNAL_PORT=$4
 CONTAINER_INTERMEDIATE=apps/$VIRTUAL_HOST_NAME/CONTAINER_INTERMEDIATE
 CONTAINER=apps/$VIRTUAL_HOST_NAME/CONTAINER
 
+NETWORK=hello-work
+
 CHECK_TIMEOUT=2
 CHECK_SUCCESS_RESULT="Hello work"
 CHECK_URI=/CHECK
@@ -37,7 +39,7 @@ fi
 echo "Start new container ${IMAGE}"
 docker run \
   --detach \
-  --network dev \
+  --network $NETWORK \
   --restart unless-stopped \
   --publish 127.0.0.1:$EXTERNAL_PORT:$INTERNAL_PORT \
   --name $VIRTUAL_HOST_NAME-$EXTERNAL_PORT \
