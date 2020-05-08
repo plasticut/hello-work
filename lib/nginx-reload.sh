@@ -1,5 +1,5 @@
 #!/bin/bash
 
-nginx -t
+docker run nginx nginx -t
 
-sudo service nginx reload
+docker restart nginx

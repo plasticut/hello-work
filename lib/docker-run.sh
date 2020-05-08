@@ -16,6 +16,8 @@ CHECK_TIMEOUT=2
 CHECK_SUCCESS_RESULT="Hello work"
 CHECK_URI=/CHECK
 
+CONTAINER_NAME=$VIRTUAL_HOST_NAME-$EXTERNAL_PORT
+
 if [ -z "$VIRTUAL_HOST_NAME" ]; then
   echo "Virtual host is not defined"
   exit 1
@@ -49,7 +51,8 @@ docker run \
   --publish 127.0.0.1:$EXTERNAL_PORT:$INTERNAL_PORT \
   --env-file $ENV_FILE \
   --volume $VIRTUAL_HOST_NAME:$INTERNAL_SHARED_FOLDER \
-  --name $VIRTUAL_HOST_NAME-$EXTERNAL_PORT \
+  --hostname $CONTAINER_NAME \
+  --name $CONTAINER_NAME \
   $IMAGE > $CONTAINER_INTERMEDIATE
 
 if [ $? -ne 0 ]; then
